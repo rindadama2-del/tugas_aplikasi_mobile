@@ -56,7 +56,6 @@ void main() {
   //   }
   // }
 
-  //spacing
   runApp(const MyApp());
 }
 
@@ -67,43 +66,82 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: SpacingTextWidget(),
+        body: Center(
+          child: LatihanWidget(),
+        ),
       ),
     );
   }
 }
 
-class SpacingTextWidget extends StatelessWidget {
-  const SpacingTextWidget({super.key});
+class LatihanWidget extends StatelessWidget {
+  const LatihanWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'kedai kekinian',
-          style: TextStyle(
-            fontSize: 22,
-            letterSpacing: 6,
-            fontWeight: FontWeight.bold,
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(),
+      ),
+      child: const Column(
+        children: [
+          Text(
+            'KEDAI KEKINIAN',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              letterSpacing: 5,
+            ),
           ),
-        ),
+          
+          SizedBox(height: 20), 
+          
+          Text(
+            'Promo Spesial',
+            style: TextStyle(
+              fontSize: 30, 
+              backgroundColor: Colors.yellow,
+              shadows: [
+                Shadow(
+                  offset: Offset(3, 3),
+                  blurRadius: 5,
+                ),
+              ],
+            ),
+          ),
+          
+          SizedBox(height: 15), 
+          
+          Text(
+            'Harga Normal Rp 20.000',
+            style: TextStyle(
+              fontSize: 20,
+              decoration: TextDecoration.lineThrough,
+            ),
+          ),
+          
+          Text(
+            'Harga Diskon\nRp 12.000',
+            style: TextStyle(
+              fontSize: 20,
+              height: 2, 
+            ),
+          ),
 
-        SizedBox(height: 20),
-
-        Text(
-          '1x Smothies mANGGA  Rp 13.000\n1x Roti Bakar     Rp 15.000\n1x Air Mineral    Rp  5.000',
-          style: TextStyle(fontSize: 16, height: 1.8),
-        ),
-
-        SizedBox(height: 20),
-
-        Text(
-          'TERIMA KASIH DITUNGGU KEDATANGANNYA LAGI',
-          style: TextStyle(fontSize: 12, wordSpacing: 4, letterSpacing: 2),
-        ),
-      ],
+          SizedBox(height: 20),
+          
+          Text(
+            'TERIMA KASIH BANYAK',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 20,
+              wordSpacing: 10,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
