@@ -66,8 +66,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: LatihanWidget(),
+        body: Column(
+          children: [
+            LatihanWidget(),
+          
+            SizedBox(height: 20),
+            
+            OverflowTextWidget(),
+            
+            SizedBox(height: 20),
+            
+            RichTextWidget(),
+          ],
         ),
       ),
     );
@@ -85,24 +95,25 @@ class LatihanWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(),
       ),
-      child: const Column(
+      child: Column(
         children: [
-          Text(
+          const Text(
             'KEDAI KEKINIAN',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20,
               letterSpacing: 5,
+              color: Colors.purple,
             ),
           ),
           
-          SizedBox(height: 20), 
+          const SizedBox(height: 20), 
           
-          Text(
+          const Text(
             'Promo Spesial',
             style: TextStyle(
-              fontSize: 30, 
-              backgroundColor: Colors.yellow,
+              fontSize: 25, 
+              backgroundColor: Colors.blue,
               shadows: [
                 Shadow(
                   offset: Offset(3, 3),
@@ -112,9 +123,9 @@ class LatihanWidget extends StatelessWidget {
             ),
           ),
           
-          SizedBox(height: 15), 
+          const SizedBox(height: 15), 
           
-          Text(
+          const Text(
             'Harga Normal Rp 20.000',
             style: TextStyle(
               fontSize: 20,
@@ -122,7 +133,7 @@ class LatihanWidget extends StatelessWidget {
             ),
           ),
           
-          Text(
+          const Text(
             'Harga Diskon\nRp 12.000',
             style: TextStyle(
               fontSize: 20,
@@ -130,14 +141,81 @@ class LatihanWidget extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           
-          Text(
-            'TERIMA KASIH BANYAK',
-            textAlign: TextAlign.right,
+          Container(
+            width: double.infinity,
+            child: const Text(
+              'TERIMA KASIH BANYAK',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontSize: 20,
+                wordSpacing: 10,
+              ),
+            ),
+          ),
+          
+        ],
+      ),
+    );
+  }
+}
+
+// maxLines dan overflow
+class OverflowTextWidget extends StatelessWidget {
+  const OverflowTextWidget({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(),
+      ),
+      child: const Text(
+        'Aku sedang belajar mata kuliah aplikasi mobile. Total sksnya 3 ya. '
+        'Mata kuliah ini sangat seru karena kita belajar membuat antarmuka pengguna '
+        'menggunakan framework Flutter yang canggih. '
+        'Happy Coding',
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+}
+
+// RichText dan TextSpan
+class RichTextWidget extends StatelessWidget {
+  const RichTextWidget({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.black,
+        ),
+        children: [
+          TextSpan(
+            text: 'hari ini mau ',
+          ),
+          TextSpan(
+            text: 'ngoding',
             style: TextStyle(
-              fontSize: 20,
-              wordSpacing: 10,
+              fontWeight: FontWeight.bold,
+              color: Colors.blue,
+            ),
+          ),
+          TextSpan(
+            text: ' atau ',
+          ),
+          TextSpan(
+            text: 'tidur',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.green,
             ),
           ),
         ],
